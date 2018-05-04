@@ -19,55 +19,25 @@
 						<th>번호</th>
 						<th>타이틀</th>
 						<th>카테고리</th>
-						<th>&nbsp;</th>
+						<th>대여일</th>
+						<th>반납일</th>
 					</tr>
+					<c:set var="count" value="${fn:length(list) }"/>
+					<c:forEach items="${list }" var="rent" varStatus="status">
 					<tr>
-						<td>5</td>
-						<td>세상의 중심에서 사랑을 외친 짐승</td>
-						<td>도서(소설)</td>
+						<td>${count - status.index }</td>
+						<td>${rent.item.title }</td>
+						<td>${rent.item.category.name }</td>
 						<td>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">대여</a>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">예약</a>
+							${rent.rentDate }
 						</td>
-					</tr>
-					<tr>
-						<td>4</td>
-						<td>AC/DC: Fly On The Wall</td>
-						<td>음반(락)</td>
 						<td>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">대여</a>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">예약</a>
-						</td>
-					</tr>						
-					<tr>
-						<td>3</td>
-						<td>Java의 정석 [3판]</td>
-						<td>도서(IT)</td>
-						<td>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">대여</a>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">예약</a>
+							${rent.returnDate }
 						</td>
 					</tr>
-					<tr>
-						<td>2</td>
-						<td>파리로 가는 길</td>
-						<td>DVD(영화-드라마)</td>
-						<td>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">대여</a>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">예약</a>
-						</td>
-					</tr>				
-					<tr>
-						<td>1</td>
-						<td>브루크너: 교향곡 7번</td>
-						<td>음반(클래식)</td>
-						<td>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">대여</a>
-							<a href="${pageContext.servletContext.contextPath }/rent" class="btn">예약</a>
-						</td>
-					</tr>				
+					</c:forEach>
 				</table>
-				<div class="pager">
+<%-- 				<div class="pager">
 					<ul>
 						<li><a href="${pageContext.servletContext.contextPath }/rent">◀</a></li>
 						<li><a href="${pageContext.servletContext.contextPath }/rent">6</a></li>
@@ -78,7 +48,7 @@
 						<li>▶</li>
 					</ul>
 				</div>
-			</div>
+ --%>			</div>
 			<c:import url="/WEB-INF/views/admin/include/navigation.jsp" />
 		</div>
 	</div>
